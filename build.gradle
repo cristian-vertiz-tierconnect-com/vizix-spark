@@ -3,27 +3,14 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
-
-    compile "org.spark-project.spark:unused:1.0.0"
+    compile "org.mongodb.spark:mongo-spark-connector_2.11:2.3.0"
     compile "org.apache.spark:spark-core_2.11:2.3.1"
-    compile "org.apache.spark:spark-streaming_2.11:2.3.1"
-    compile "org.apache.spark:spark-mllib_2.11:2.3.1"
-    compile "org.apache.spark:spark-hive_2.11:2.3.1"
-    compile "org.apache.spark:spark-graphx_2.11:2.3.1"
-    compile "org.apache.spark:spark-streaming-kafka-0-10_2.11:2.3.1"
-    compile "org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.1"
-    compile "org.apache.commons:commons-math3:*"
-//    testCompile "org.scalacheck:scalacheck_2.11:*"
-    compile "org.scala-lang:scala-library:*"
-    compile "com.github.scopt:scopt_2.11:3.7.0"
-    compile "com.twitter:parquet-hadoop-bundle:*"
-    compile "org.apache.spark:spark-streaming-kinesis-asl_2.11:2.3.1"
+    compile "org.apache.spark:spark-sql_2.11:2.3.1"
 }
