@@ -39,15 +39,8 @@ public final class DatasetSQLDemo {
         thingSnapshotsResult.show();
 //
 //
-        Map<String,String> readConfigMap = new HashMap<>();
-        readConfigMap.put("uri","mongodb://admin:control123!@10.100.0.225/riot_main.things?authSource=admin");
-//
-        ReadConfig readConfig = ReadConfig.create(readConfigMap);
-        Dataset<Row> things = MongoSpark.load(jsc, readConfig).toDF();
-
+        Dataset<Row> things = MongoSpark.load(jsc, ReadConfig.create(spark).withOption("collection", "things")).toDF();
         things.createOrReplaceTempView("things");
-
-
         Dataset<Row> thingsResult = spark.sql("SELECT _id, serialNumber, zone.time FROM things");
         thingsResult.printSchema();
         thingsResult.show();
